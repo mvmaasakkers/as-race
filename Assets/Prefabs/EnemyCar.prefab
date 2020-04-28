@@ -119,10 +119,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 1
   lane: 3
+  player: {fileID: 0}
   rb: {fileID: 3592436056368879041}
   CarDestroyed:
     m_PersistentCalls:
       m_Calls: []
+  explosion: {fileID: 3050562265553520140, guid: 0293bce0a94b0ee46a34e44fb1dce427,
+    type: 3}
+  removeOnY: 128
 --- !u!61 &3592436056368879043
 BoxCollider2D:
   m_ObjectHideFlags: 0
