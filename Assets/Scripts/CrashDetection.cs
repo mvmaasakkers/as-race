@@ -12,10 +12,12 @@ public class CrashDetection : MonoBehaviour
     public Material gameOverMaterial;
 
     public GameObject gameOverText;
+    public GameObject resetButton;
 
     public void GameOver()
     {
         gameOverText.SetActive(true);
+        resetButton.SetActive(true);
 
         ExplodeGameObject(gameObject);
 

@@ -5,23 +5,26 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyCar;
+    public GameObject player;
+
     public int enemyCount = 0;
-
-    public int maxEnemies = 3;
-
-    float lane1 = -2f;
-    float lane2 = 0f;
-    float lane3 = 2f;
+    public int maxEnemies = 2;
+    
+    public float[] lanes;
 
     float spawnpointY = 6f;
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        enemyCount -= 1;
+    }
+
     void Update()
     {
-        if (enemyCount < maxEnemies)
+        if (enemyCount == 0)
         {
-            addEnemy(lane1);
-            addEnemy(lane2);
-            addEnemy(lane3);
+            int i = Random.Range(0, lanes.Length);
+            addEnemy(lanes[i]);
         }
     }
 
@@ -29,6 +32,7 @@ public class EnemySpawner : MonoBehaviour
     {
         enemyCount += 1;
         GameObject c = Instantiate(enemyCar, new Vector2(x, spawnpointY), Quaternion.identity);
+        c.GetComponent<EnemyCar>().player = player;
         c.GetComponent<EnemyCar>().movementSpeed = Random.Range(1f, 2f);
     }
 }
