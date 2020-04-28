@@ -13,17 +13,20 @@ public class EnemyCar : MonoBehaviour
     public Rigidbody2D rb;
 
     public UnityEvent CarDestroyed;
-
+    public GameObject explosion;
     Vector2 movement;
+
+    public float removeOnY = -128f;
 
     void Update()
     {
         movement.y = -1;
 
         Vector2 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
-        if (screenPosition.y < -128)
+        if (screenPosition.y < removeOnY)
         {
             player.GetComponent<PlayerMovement>().IncreaseScore();
+            Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }
