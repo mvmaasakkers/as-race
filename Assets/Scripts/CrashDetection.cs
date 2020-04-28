@@ -16,10 +16,12 @@ public class CrashDetection : MonoBehaviour
 
     public void GameOver()
     {
+        ExplodeGameObject(gameObject);
+
         gameOverText.SetActive(true);
         resetButton.SetActive(true);
 
-        ExplodeGameObject(gameObject);
+        
 
         // Make roadsides red
         roadsides.gameObject.GetComponent<Renderer>().material = gameOverMaterial;
@@ -37,7 +39,7 @@ public class CrashDetection : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-
+        	GameOver();
             GameObject[] gos;
             gos = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject g in gos)
@@ -45,7 +47,7 @@ public class CrashDetection : MonoBehaviour
                 g.GetComponent<EnemyCar>().movementSpeed = 0f;
                 
             }
-            GameOver();
+            
         }
         
     }
