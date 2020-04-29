@@ -21,13 +21,7 @@ public class CrashDetection : MonoBehaviour
         gameOverText.SetActive(true);
         resetButton.SetActive(true);
 
-        
-
-        // Make roadsides red
         roadsides.gameObject.GetComponent<Renderer>().material = gameOverMaterial;
-        
-
-        // Show game over + score
     }
 
     public void ResetGame()
@@ -57,5 +51,4 @@ public class CrashDetection : MonoBehaviour
         Instantiate(explosion, go.transform.position, Quaternion.identity);
         Destroy(go.gameObject);
     }
-    
 }
